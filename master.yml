@@ -1,0 +1,15 @@
+--- # My First YAML Playbook
+- hosts: all
+  user: ansible
+  sudo: yes                       # yes or no
+  connection: ssh                 # ssh or paramico
+  gather_facts: yes               # yes or no
+  pre_tasks:
+   - name: Start of the role
+     raw: date > /home/ansible/rolestart.log
+  roles:
+   - { role: prod, when: ansible_os_family == "RedHat" }
+   - { role: test, when: ansible_os_family == "CentOS7" } 
+  post_tasks:
+   - name: end of the role
+     raw: date > /home/ansible/roleend.log

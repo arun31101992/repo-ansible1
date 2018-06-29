@@ -1,0 +1,14 @@
+--- # My First YAML Playbook
+- hosts: all
+  user: ansible
+  sudo: yes                       # yes or no
+  connection: ssh                 # ssh or paramico
+  gather_facts: yes               # yes or no
+  tasks:
+   - name: Install httpd server on centos
+     action: yum name=httpd state=installed
+   - name: wait for service to start listening on port 80
+     wait_for:
+      path: /home/ansible/arun.txt
+      #port: 80
+      #state: started

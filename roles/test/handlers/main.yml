@@ -1,0 +1,2 @@
+- name: Start Apache
+  action: service name='{{ testpkg}}' state=started

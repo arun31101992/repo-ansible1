@@ -1,0 +1,14 @@
+--- # My First YAML Playbook
+- hosts: others
+  user: ansible
+  sudo: yes                       # yes or no
+  connection: ssh                 # ssh or paramico
+  gather_facts: yes               # yes or no
+  tasks:
+   - name: install httpd on CentOS7
+     #action: yum name=httpd state=present
+     user: name={{ item }} state=present
+     with_items:
+      - user1
+      - user2
+      - user3

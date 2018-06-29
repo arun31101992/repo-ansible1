@@ -1,0 +1,15 @@
+--- # My First YAML Playbook
+- hosts: demo
+  user: ansible
+  sudo: yes                       # yes or no
+  connection: ssh                 # ssh or paramico
+  gather_facts: yes               # yes or no
+  tasks:
+   - name: firstname
+     raw: echo "Arun" >> /home/ansible/logs.txt
+     tags:
+      - firstname
+   - name: Secondname
+     raw: echo "Praneeth" >> /home/ansible/logs.txt
+     tags:
+      - secondname
